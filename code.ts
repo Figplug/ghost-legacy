@@ -1,13 +1,16 @@
+// import * as colorConvert from 'color-convert'
+
+
 let type = ['Solid', 'Linear Gradient'],
 	colors = ['Gray', 'Black', 'White'],
 	fills;
 figma.parameters.on('input', ({ key, query, result }: ParameterInputEvent) => {
 	switch (key) {
 		case 'type':
-			result.setSuggestions(type.filter((s) => s.includes(query)));
+			result.setSuggestions(type.filter((s) => s.toLowerCase().includes(query.toLowerCase())));
 			break;
 		case 'color':
-			result.setSuggestions(colors.filter((s) => s.includes(query)));
+			result.setSuggestions(colors.filter((s) => s.toLowerCase().includes(query.toLowerCase())));
 			break;
 		default:
 			return;
@@ -28,6 +31,26 @@ figma.on('run', ({ parameters }: RunEvent) => {
 				},
 			},
 		]),
+		'Solid' === parameters.type &&
+		'Gray' !== parameters.color &&
+		'Black' !== parameters.color &&
+		'White' !== parameters.color &&
+		(fills = () => {
+			const colorConvert = require('color-convert')
+			const hexColor = parameters.color
+			const rgbColor = colorConvert.hex.rgb(hexColor);
+			console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'hexColor =>', hexColor)
+			return [
+				{
+					type: 'SOLID',
+					color: {
+						r: rgbColor[0] / 255,
+						g: rgbColor[1] / 255,
+						b: rgbColor[2] / 255,
+					},
+				},
+			]
+		}),
 		'Gray' === parameters.color &&
 			'Linear Gradient' === parameters.type &&
 			(fills = [

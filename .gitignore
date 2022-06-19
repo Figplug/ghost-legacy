@@ -1,1 +1,14 @@
+# npm
+node_modules
+.npm
+npm-debug.log
+
+out/
+dist/
+code.js
+
+# mac
+.DS_Store
+
+# build artifacts
 code.js

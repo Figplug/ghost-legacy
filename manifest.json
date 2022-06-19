@@ -1,5 +1,5 @@
 {
-	"name": "Ghost",
+	"name": "Ghost-legacy",
 	"id": "1017135840453013129",
 	"api": "1.0.0",
 	"main": "code.js",
@@ -14,7 +14,8 @@
 		{
 			"name": "Color",
 			"key": "color",
-			"description": "What color would you like your ghosts to be?"
+			"description": "What color would you like your ghosts to be?",
+			"allowFreeform": true
 		}
 	]
 }

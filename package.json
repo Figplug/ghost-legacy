@@ -4,14 +4,19 @@
 	"description": "Turn your designs into placeholder skeleton.",
 	"main": "code.js",
 	"scripts": {
-		"build": "tsc -p tsconfig.json"
+		"build": "tsc -p tsconfig.json",
+		"tsc:watch": "tsc -w"
 	},
 	"author": "Chris Kark",
 	"license": "MIT",
 	"devDependencies": {
-		"@figma/plugin-typings": "*"
+		"@figma/plugin-typings": "*",
+		"@types/color-convert": "^2.0.0",
+		"@types/node": "^18.0.0"
 	},
 	"dependencies": {
-		"prettier": "*"
+		"color-convert": "^2.0.1",
+		"prettier": "*",
+		"typescript": "^4.7.4"
 	}
 }
