@@ -1,7 +1,7 @@
 {
-	"name": "ghost",
+	"name": "ghost-legacy",
 	"version": "1.0.0",
-	"description": "Turn your designs into skeletons or placeholders in a jiffy.",
+	"description": "Turn your designs into placeholder skeleton.",
 	"main": "code.js",
 	"scripts": {
 		"build": "tsc -p tsconfig.json"
