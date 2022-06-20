@@ -25,7 +25,7 @@ Click bellow to install the main version from figma community [Legacy version Co
 
 Select One (1) or more layers and run the plugin.
 
-For the style, choose Solid and for the Color choose one of the three existing proposals (Gray, White, Black) or enter a color name X11 or enter a valid hexadecimal value
+For the Type, choose Solid and for the Color choose one of the three existing proposals (Gray, White, Black) or enter a color name X11 or enter a valid hexadecimal value
 
 Note: in the case of an invalid color entry, gray is taken by default
 
@@ -39,7 +39,7 @@ Note: in the case of an invalid color entry, gray is taken by default
 
 Select One (1) or more layers and run the plugin.
 
-For the style, choose Gradient and for the Color choose one of the three existing proposals (Gray, White, Black)
+For the Type, choose Gradient and for the Color choose one of the three existing proposals (Gray, White, Black)
 
 Note: currently you cannot enter a color name X11 or hexadecimal value
 
