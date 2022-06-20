@@ -1,3 +1,13 @@
-node_modules/
+# npm
+node_modules
+.npm
+npm-debug.log
+
+out/
 dist/
+
+# mac
 .DS_Store
+
+# build artifacts
+code.js
