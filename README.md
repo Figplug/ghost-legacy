@@ -15,7 +15,7 @@
 
 # Installation
 
-Click bellow to direct install from figma community
+Click bellow to install the main version from figma community [Legacy version Coming Soon]
 
 <a href="https://www.figma.com/community/plugin/1017135840453013129"><img alt="Install Plugin" src="https://img.shields.io/endpoint?url=https://figma-plugin-badges.vercel.app/api/installs/1017135840453013129" height=24/></a>
 
@@ -23,29 +23,28 @@ Click bellow to direct install from figma community
 
 ## 1. Ghost-legacy > Solid
 
-### - Gray | White | Black
-
 Select One (1) or more layers and run the plugin.
 
+For the style, choose Solid and for the Color choose one of the three existing proposals (Gray, White, Black) or enter a color name X11 or enter a valid hexadecimal value
+
+Note: in the case of an invalid color entry, gray is taken by default
+
+
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
-### - Custom
-
-!["Action Preview"](src/assets/ghost-demo-1.gif)
 
 </br>
 
 ## 2. Ghost-legacy > Gradient
 
-### - Gray | White |Black
-
 Select One (1) or more layers and run the plugin.
 
+For the style, choose Gradient and for the Color choose one of the three existing proposals (Gray, White, Black)
+
+Note: currently you cannot enter a color name X11 or hexadecimal value
+
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
-### - Customs
-
-!["Action Preview"](src/assets/ghost-demo-1.gif)
 
 </br>
 
