@@ -12,3 +12,5 @@ code.js
 
 # build artifacts
 code.js
+
+.DS_Store

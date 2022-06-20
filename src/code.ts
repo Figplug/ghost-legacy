@@ -2,45 +2,53 @@
 
 
 let type = ['Solid', 'Linear Gradient'],
-	colors = ['Gray', 'Black', 'White'],
-	fills;
+colors = ['Gray', 'Black', 'White']
+let fills: any;
+
 figma.parameters.on('input', ({ key, query, result }: ParameterInputEvent) => {
-	switch (key) {
-		case 'type':
-			result.setSuggestions(type.filter((s) => s.toLowerCase().includes(query.toLowerCase())));
-			break;
-		case 'color':
-			result.setSuggestions(colors.filter((s) => s.toLowerCase().includes(query.toLowerCase())));
-			break;
-		default:
-			return;
-	}
+switch (key) {
+	case 'type':
+		result.setSuggestions(type.filter((s) => s.toLowerCase().includes(query.toLowerCase())));
+		break;
+	case 'color':
+		result.setSuggestions(colors.filter((s) => s.toLowerCase().includes(query.toLowerCase())));
+		break;
+	default:
+		return;
+}
 });
+
 figma.on('run', ({ parameters }: RunEvent) => {
-	0 === figma.currentPage.selection.length && (figma.notify('Select at least one item.'), figma.closePlugin());
-	parameters &&
+if (parameters) {
+	if (figma.currentPage.selection.length === 0) {
+		figma.notify('Select at least one item.')
+		figma.closePlugin()
+	}
+
+	if (parameters &&
 		'Gray' === parameters.color &&
-		'Solid' === parameters.type &&
-		(fills = [
-			{
-				type: 'SOLID',
-				color: {
-					r: 0.9,
-					g: 0.9,
-					b: 0.9,
+		'Solid' === parameters.type) {
+			fills = [
+				{
+					type: 'SOLID',
+					color: {
+						r: 0.9,
+						g: 0.9,
+						b: 0.9,
+					},
 				},
-			},
-		]),
-		'Solid' === parameters.type &&
+			]
+		}
+	
+		if ('Solid' === parameters.type &&
 		'Gray' !== parameters.color &&
 		'Black' !== parameters.color &&
-		'White' !== parameters.color &&
-		(fills = () => {
+		'White' !== parameters.color) {
 			const colorConvert = require('color-convert')
 			const hexColor = parameters.color
 			const rgbColor = colorConvert.hex.rgb(hexColor);
-			console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'hexColor =>', hexColor)
-			return [
+			// console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'hexColor =>', hexColor)
+			fills =  [
 				{
 					type: 'SOLID',
 					color: {
@@ -50,10 +58,14 @@ figma.on('run', ({ parameters }: RunEvent) => {
 					},
 				},
 			]
-		}),
-		'Gray' === parameters.color &&
-			'Linear Gradient' === parameters.type &&
-			(fills = [
+		} 
+	
+		
+		
+
+		if ('Gray' === parameters.color &&
+		'Linear Gradient' === parameters.type) {
+			fills = [
 				{
 					type: 'GRADIENT_LINEAR',
 					gradientTransform: [
@@ -81,22 +93,26 @@ figma.on('run', ({ parameters }: RunEvent) => {
 						},
 					],
 				},
-			]),
-		'Black' === parameters.color &&
-			'Solid' === parameters.type &&
-			(fills = [
-				{
-					type: 'SOLID',
-					color: {
-						r: 0,
-						g: 0,
-						b: 0,
+			]
+		}
+			
+		if ('Black' === parameters.color &&
+			'Solid' === parameters.type ) {
+				fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: 0,
+							g: 0,
+							b: 0,
+						},
 					},
-				},
-			]),
-		'Black' === parameters.color &&
-			'Linear Gradient' === parameters.type &&
-			(fills = [
+				]
+			}
+			
+		if ('Black' === parameters.color &&
+		'Linear Gradient' === parameters.type) {
+			fills = [
 				{
 					type: 'GRADIENT_LINEAR',
 					gradientTransform: [
@@ -124,53 +140,59 @@ figma.on('run', ({ parameters }: RunEvent) => {
 						},
 					],
 				},
-			]),
-		'White' === parameters.color &&
-			'Solid' === parameters.type &&
-			(fills = [
-				{
-					type: 'SOLID',
-					color: {
-						r: 1,
-						g: 1,
-						b: 1,
+			]
+		}
+			
+		if ('White' === parameters.color &&
+			'Solid' === parameters.type) {
+				fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: 1,
+							g: 1,
+							b: 1,
+						},
 					},
-				},
-			]),
-		'White' === parameters.color &&
-			'Linear Gradient' === parameters.type &&
-			(fills = [
-				{
-					type: 'GRADIENT_LINEAR',
-					gradientTransform: [
-						[-1, 1.516437286852579e-8, 1],
-						[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
-					],
-					gradientStops: [
-						{
-							color: {
-								r: 1,
-								g: 1,
-								b: 1,
-								a: 1,
+				]
+			}
+			
+		if ('White' === parameters.color &&
+			'Linear Gradient' === parameters.type) {
+				fills = [
+					{
+						type: 'GRADIENT_LINEAR',
+						gradientTransform: [
+							[-1, 1.516437286852579e-8, 1],
+							[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
+						],
+						gradientStops: [
+							{
+								color: {
+									r: 1,
+									g: 1,
+									b: 1,
+									a: 1,
+								},
+								position: 0,
 							},
-							position: 0,
-						},
-						{
-							color: {
-								r: 1,
-								g: 1,
-								b: 1,
-								a: 0.05,
+							{
+								color: {
+									r: 1,
+									g: 1,
+									b: 1,
+									a: 0.05,
+								},
+								position: 0.5,
 							},
-							position: 0.5,
-						},
-					],
-				},
-			]);
+						],
+					},
+				]
+			}
+
 	let all = new Array();
-	const traversal = (e, l) => {
-		const t = (function* e(t) {
+	const traversal = (e: any, l: any): any => {
+		const t = (function* e(t): any {
 			const a = t.length;
 			if (0 !== a) {
 				for (let l = 0; l < a; l++) {
@@ -185,13 +207,16 @@ figma.on('run', ({ parameters }: RunEvent) => {
 		let a = t.next();
 		for (; !a.done; ) a = t.next();
 	};
+
+
 	traversal(figma.currentPage.selection, all), (all = all.flat());
-	const detach = (e) => {
+
+	const detach = (e: any): any => {
 		let t = new Array();
-		if ((e = e.filter((e) => 'INSTANCE' === e.type).filter((e) => 'I' !== e.id.substr(0, 1))).length > 0)
+		if ((e = e.filter((e: any) => 'INSTANCE' === e.type).filter((e: any) => 'I' !== e.id.substr(0, 1))).length > 0)
 			return (
 				traversal(
-					e.map((e) => e.detachInstance()),
+					e.map((e: any) => e.detachInstance()),
 					t,
 				),
 				all.push(
@@ -208,13 +233,18 @@ figma.on('run', ({ parameters }: RunEvent) => {
 				all.flat()
 			);
 	};
-	detach(all),
-		(all = all
+
+	detach(all)
+
+	all = all
 			.flat()
 			.filter((e) => 'INSTANCE' !== e.type)
-			.filter((e) => 'I' !== e.id.substr(0, 1)));
-	let frames = all.filter((e) => 'FRAME' === e.type && 'PAGE' !== e.parent.type),
-		shapes = all.filter(
+			.filter((e) => 'I' !== e.id.substr(0, 1))
+
+
+	let frames = all.filter((e) => 'FRAME' === e.type && 'PAGE' !== e.parent.type)
+
+	let shapes = all.filter(
 			(n) =>
 				n.type === 'BOOLEAN_OPERATION' ||
 				n.type === 'ELLIPSE' ||
@@ -223,29 +253,34 @@ figma.on('run', ({ parameters }: RunEvent) => {
 				n.type === 'RECTANGLE' ||
 				n.type === 'SLICE' ||
 				n.type === 'STAR',
-		) as SceneNode[],
-		vectors = all.filter((n) => n.type === 'VECTOR') as VectorNode[],
-		text = all.filter((n) => n.type === 'TEXT') as TextNode[];
-	const ghostifyFrames = (e) => {
-			e.map((e) => {
+		) as SceneNode[]
+
+		let vectors = all.filter((n) => n.type === 'VECTOR') as VectorNode[]
+		let text = all.filter((n) => n.type === 'TEXT') as TextNode[];
+
+	const ghostifyFrames = (e: any) => {
+			e.map((e: any) => {
 				(e.layoutMode = 'NONE'), (e.effects = []), (e.fills = []), (e.strokes = []);
 			});
-		},
-		ghostifyVector = (e) => {
-			e.map((e) => {
+		}
+
+		const ghostifyVector = (e: any) => {
+			e.map((e: any) => {
 				(e.fills = fills), e.strokeWeight > 0 && (e.strokes = fills), 0 === e.strokeWeight && (e.strokes = []);
 			});
-		},
-		ghostifyShapes = (e) => {
-			e.map((e) => {
-				e.fills.filter((e) => 'IMAGE' !== e.type)
+		}
+
+		const ghostifyShapes = (e: any) => {
+			e.map((e: any) => {
+				e.fills.filter((e: any) => 'IMAGE' !== e.type)
 					? ((e.fills = fills), (e.strokes = fills))
 					: ((e.fills = []), (e.strokes = []));
 			});
-		},
-		ghostifyText = (e) =>
+		}
+
+		const ghostifyText = (e: any) =>
 			new Promise((t) => {
-				e.map(async (e) => {
+				e.map(async (e: any) => {
 					if (e.fontName === figma.mixed) {
 						const t = figma.createRectangle();
 						let i = e.height;
@@ -281,6 +316,8 @@ figma.on('run', ({ parameters }: RunEvent) => {
 				}),
 					setTimeout(() => t('done'), 0);
 			});
+
+
 	const ghostify = async () => {
 		ghostifyFrames(frames),
 			ghostifyVector(vectors),
@@ -288,5 +325,7 @@ figma.on('run', ({ parameters }: RunEvent) => {
 			await ghostifyText(text),
 			figma.closePlugin('Selection ghostified 👻.');
 	};
+	
 	ghostify();
+}
 });

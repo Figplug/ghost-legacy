@@ -2,7 +2,7 @@
 	"name": "Ghost-legacy",
 	"id": "1017135840453013129",
 	"api": "1.0.0",
-	"main": "code.js",
+	"main": "dist/code.js",
 	"editorType": ["figma"],
 	"parameterOnly": true,
 	"parameters": [
