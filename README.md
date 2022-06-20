@@ -29,9 +29,7 @@ For the Type, choose Solid and for the Color choose one of the three existing pr
 
 Note: in the case of an invalid color entry, gray is taken by default
 
-
 !["Action Preview"](src/assets/ghost-demo-1.gif)
-
 
 </br>
 
@@ -45,7 +43,6 @@ Note: currently you cannot enter a color name X11 or hexadecimal value
 
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
-
 </br>
 
 > ## Tips : Launch plugins actions with custom keyboard
@@ -53,7 +50,7 @@ Note: currently you cannot enter a color name X11 or hexadecimal value
 > For **Mac users** it is possible to associate natively a
 > keyboard shortcut to your figma plugin from settings
 > -learn more in this [youtube videos](https://www.youtube.com/watch?v=r-6q1AJNeTQ) or use
-> [this method]() for **Windows users**.
+> [this method](https://www.youtube.com/watch?v=hkbTDbXc5Ng) for **Windows users**.
 
 # Object handled
 

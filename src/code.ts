@@ -1,28 +1,5 @@
-// figma.showUI(__html__, { title: "Figma Plugun React Starter", width: 300, height: 500 });
 
-// figma.ui.onmessage = (msg) => {
-//   if (msg.type === "create-rectangles") {
-//     const nodes = [];
-
-//     for (let i = 0; i < msg.count; i++) {
-//       const rect = figma.createRectangle();
-//       rect.x = i * 150;
-//       rect.fills = [{ type: "SOLID", color: { r: 1, g: 0.5, b: 0 } }];
-//       figma.currentPage.appendChild(rect);
-//       nodes.push(rect);
-//     }
-
-//     figma.currentPage.selection = nodes;
-//     figma.viewport.scrollAndZoomIntoView(nodes);
-//   }
-
-//   figma.closePlugin();
-// };
-
-// import * as colorConvert from 'color-convert'
-
-
-let type = ['Solid', 'Linear Gradient'],
+let type = ['Solid', 'Gradient'],
 colors = ['Gray', 'Black', 'White']
 let fills: any;
 
@@ -68,7 +45,9 @@ if (parameters) {
 			const colorConvert = require('color-convert')
 			const hexColor = parameters.color
 			const rgbColor = colorConvert.hex.rgb(hexColor);
+
 			// console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'hexColor =>', hexColor)
+
 			fills =  [
 				{
 					type: 'SOLID',
@@ -80,12 +59,10 @@ if (parameters) {
 				},
 			]
 		} 
-	
-		
 		
 
 		if ('Gray' === parameters.color &&
-		'Linear Gradient' === parameters.type) {
+		'Gradient' === parameters.type) {
 			fills = [
 				{
 					type: 'GRADIENT_LINEAR',
@@ -132,7 +109,7 @@ if (parameters) {
 			}
 			
 		if ('Black' === parameters.color &&
-		'Linear Gradient' === parameters.type) {
+		'Gradient' === parameters.type) {
 			fills = [
 				{
 					type: 'GRADIENT_LINEAR',
@@ -179,7 +156,7 @@ if (parameters) {
 			}
 			
 		if ('White' === parameters.color &&
-			'Linear Gradient' === parameters.type) {
+			'Gradient' === parameters.type) {
 				fills = [
 					{
 						type: 'GRADIENT_LINEAR',
