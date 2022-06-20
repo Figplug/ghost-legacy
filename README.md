@@ -1,4 +1,4 @@
-<h1 align="center"><img alt="Ghost-legacy" src="" height="150px"/></h1>
+<h1 align="center"><img alt="Ghost-legacy" src="src/assets/ghost-legacy.svg" height="150px"/></h1>
 
 <div align="center">
   Convert high fidelity mockups to skeleton placeholder.
@@ -27,11 +27,11 @@ Click bellow to direct install from figma community
 
 Select One (1) or more layers and run the plugin.
 
-!["Action Preview"]()
+!["Action Preview"](src/assets/ghost-demo-1.gif)
 
 ### - Custom
 
-!["Action Preview"]()
+!["Action Preview"](src/assets/ghost-demo-1.gif)
 
 </br>
 
@@ -39,11 +39,13 @@ Select One (1) or more layers and run the plugin.
 
 ### - Gray | White |Black
 
-!["Action Preview"]()
+Select One (1) or more layers and run the plugin.
 
-### - Custom
+!["Action Preview"](src/assets/ghost-demo-1.gif)
 
-!["Action Preview"]()
+### - Customs
+
+!["Action Preview"](src/assets/ghost-demo-1.gif)
 
 </br>
 
