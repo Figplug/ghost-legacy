@@ -1,4 +1,4 @@
-<h1 align="center"><img alt="Ghost-legacy" src="src/assets/ghost-legacy.svg" height="150px"/></h1>
+<h1 align="center"><img alt="Ghost-legacy" src="src/assets/ghost-legacy.png" height="150px"/></h1>
 
 <div align="center">
   Convert high fidelity mockups to skeleton placeholder.
