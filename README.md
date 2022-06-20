@@ -1,28 +1,119 @@
-# Ghost
+<h1 align="center"><img alt="Ghost-legacy" src="" height="150px"/></h1>
 
-Ghost is a lightweight plugin that converts high fidelity mockups to loading or “skeleton” screens.
+<div align="center">
+  Convert high fidelity mockups to skeleton placeholder.
+</div>
 
-## How it Works
+<div align="center">
 
-Ghost detects all text and shape layers (rectangles, ellipses, vectors, frames, etc.) selected. It then measures their dimensions before replacing them with rectangles; the original layers are removed.
-To general a layout faithful to the original, Ghost removes auto-layout, thereby preventing some of the anomalies that occur when inserting children into frames.
+</br>
 
-## Basic Usage
+![GitHub last commit](https://img.shields.io/github/last-commit/mrstev3n/ghost-legacy?color=blue&style=plastic)
+![Repo size](https://img.shields.io/github/repo-size/mrstev3n/ghost-legacy?color=orange&style=plastic)
 
-1. Select a shape, text box, or an entire screen.
-2. Select a color.
-3. Ghost!
+</div>
 
-## Recommended Usage
+# Installation
 
-Loading is a state specific design akin to `disabled` or `destructive`, `hover` or `active`. Create a ghostified loading variant.
+Click bellow to direct install from figma community
 
-## Roadmap
+<a href="https://www.figma.com/community/plugin/1017135840453013129"><img alt="Install Plugin" src="https://img.shields.io/endpoint?url=https://figma-plugin-badges.vercel.app/api/installs/1017135840453013129" height=24/></a>
 
--   Color picker—depending on whether Figma’s new input parameters add support for HTML-like inputs like `input type=color`.
--   Linear gradients for a sheen effect.
--   Convert one or more directly selected instances.
+# Usage
 
-## End Notes
+## 1. Ghost-legacy > Solid
 
-I’m relatively new to Typescript and working with Figma’s API in general. For questions and (constructive) feedback, send me a message.
+### - Gray | White | Black
+
+Select One (1) or more layers and run the plugin.
+
+!["Action Preview"]()
+
+### - Custom
+
+!["Action Preview"]()
+
+</br>
+
+## 2. Ghost-legacy > Gradient
+
+### - Gray | White |Black
+
+!["Action Preview"]()
+
+### - Custom
+
+!["Action Preview"]()
+
+</br>
+
+> ## Tips : Launch plugins actions with custom keyboard
+>
+> For **Mac users** it is possible to associate natively a
+> keyboard shortcut to your figma plugin from settings
+> -learn more in this [youtube videos](https://www.youtube.com/watch?v=r-6q1AJNeTQ) or use
+> [this method]() for **Windows users**.
+
+# Object handled
+
+- RECTANGLE
+- ELLIPSE
+- STAR
+- POLYGON
+- LINE
+- TEXT
+- SHAPE_WITH_TEXT
+- GROUP
+- FRAME
+- COMPONENT/ INSTANCE
+
+# Support
+
+Do you find this plugin version useful ? </br> please consider to make a donation to support 🙏🏼
+
+<p>
+<a href="https://www.buymeacoffee.com/mrstev3n"><img alt="Buy Me A Coffee" src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" height=32></a>
+<a href="https://liberapay.com/mrstev3n/"><img alt="Liberapay" src="https://img.shields.io/badge/Liberapay-F6C915?style=flat&logo=liberapay&logoColor=black" height=32></a>
+</p>
+
+# Code
+
+## Quick Setup
+
+- Clone the repository.
+- `npm install` installs all the dependencies.
+- `npm build` builds and bundles the plugin.
+- Import manifest into Figma and test.
+
+### Contribution
+
+Contributions are welcomed, feel free to make a pull request or create an issue
+
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/mrstev3n/ghost-legacy.svg)](https://GitHub.com/mrstev3n/ghost-legacy/pull/)
+[![GitHub issues](https://img.shields.io/github/issues/mrstev3n/ghost-legacy.svg)](https://GitHub.com/mrstev3n/ghost-legacy/issues/)
+
+# Credits and Thanks
+
+Legacy version - Maker : [@mrstev3n](https://github.com/mrstev3n) & [@rickfaf](https://github.com/rickfaf)
+
+- code satinitization
+- add new parameters with custom color support
+- figjam friendly
+- documentation
+
+Origin - Maker : [@ckark](https://github.com/ckark)
+
+- lightweight plugin to convert selected layers to solid or gradients
+
+</br>
+
+# End Notes
+
+We recall that this is a fork of the excellent work of Chris Kark, that we have improved and have seen fit to share with the community.
+
+# Meet me in the browser
+
+<p>
+<a href="https://figma.com/@steven"><img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" height=24></a>
+<a href="https://twitter.com/mrstev3n"><img src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" height=24></a>
+</p>

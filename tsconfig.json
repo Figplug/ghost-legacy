@@ -1,8 +1,14 @@
 {
 	"compilerOptions": {
-		"moduleResolution": "node",
-		"target": "esnext",
-		"lib": ["esnext"],
-		"typeRoots": ["./node_modules/@types", "./node_modules/@figma"]
+	  "target": "es6",
+	  "skipLibCheck": true,
+	  "lib": [
+		"es6",
+		"dom"
+	  ],
+	  "typeRoots": [
+		"./node_modules/@types",
+		"./node_modules/@figma"
+	  ]
 	}
-}
+  }
