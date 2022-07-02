@@ -39,18 +39,11 @@ Select One (1) or more layers and run the plugin.
 
 For the Type, choose Gradient and for the Color choose one of the three existing proposals (Gray, White, Black)
 
-Note: currently you cannot enter a color name X11 or hexadecimal value
+> Note: currently you cannot enter a color name X11 or hexadecimal value
 
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
 </br>
-
-> ## Tips : Launch plugins actions with custom keyboard
->
-> For **Mac users** it is possible to associate natively a
-> keyboard shortcut to your figma plugin from settings
-> -learn more in this [youtube videos](https://www.youtube.com/watch?v=r-6q1AJNeTQ) or use
-> [this method](https://www.youtube.com/watch?v=hkbTDbXc5Ng) for **Windows users**.
 
 # Object handled
 
@@ -99,7 +92,7 @@ Legacy version - Maker : [@mrstev3n](https://github.com/mrstev3n) & [@rickfaf](h
 - figjam friendly
 - documentation
 
-Origin - Maker : [@ckark](https://github.com/ckark)
+Origin version - Maker : [@ckark](https://github.com/ckark)
 
 - lightweight plugin to convert selected layers to solid or gradients
 
