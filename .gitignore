@@ -1,5 +1,5 @@
 # npm
-node_modules
+#node_modules
 .npm
 npm-debug.log
 
@@ -7,7 +7,7 @@ out/
 dist/
 
 # mac
-.DS_Store
+#.DS_Store
 
 # build artifacts
 code.js
