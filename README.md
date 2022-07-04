@@ -19,15 +19,14 @@ Click bellow to install the main version from figma community [Legacy version Co
 src/assets/decoration/down-chevron.gif
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-light.gif">
-  <img alt="chevron-color-auto" src="src/assets/decoration/chevron-dark.gif" height=32>
+  <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-animated-right.gif">
+  <img alt="chevron-color-auto" src="src/assets/decoration/chevron-animated-right.gif" height=24>
 </picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-light.gif">
-  <img alt="chevron-color-auto" src="src/assets/decoration/chevron-dark.gif" height=32>
-</picture>
-
 <a href="https://www.figma.com/community/plugin/1017135840453013129"><img alt="Install Plugin" src="https://img.shields.io/endpoint?url=https://figma-plugin-badges.vercel.app/api/installs/1017135840453013129" height=24/></a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-animated-left.gif">
+  <img alt="chevron-color-auto" src="src/assets/decoration/chevron-animated-left.gif" height=24>
+</picture>
 
 # Usage
 
