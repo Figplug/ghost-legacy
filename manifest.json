@@ -14,7 +14,7 @@
 		{
 			"name": "Color",
 			"key": "color",
-			"description": "Enter the skeleton Color [HEX or Valid Color Name].",
+			"description": "Choose the skeleton Color [⚠️ Enter X11 Color Name or HEX available for Solid only].",
 			"allowFreeform": true
 		}
 	]
