@@ -15,8 +15,7 @@
 
 # Installation
 
-Click bellow to install the main version from figma community [Legacy version Coming Soon]
-src/assets/decoration/down-chevron.gif
+Click the button below to try out this plugin from Figma community
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-animated-right.gif">
@@ -36,7 +35,7 @@ Select One (1) or more layers and run the plugin.
 
 For the Type, choose Solid and for the Color choose one of the three existing proposals (Gray, White, Black) or enter a color name X11 or enter a valid hexadecimal value
 
-Note: in the case of an invalid color entry, gray is taken by default
+Note: in the case of an invalid color entry, no action is taken (the interface remain the same)
 
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
