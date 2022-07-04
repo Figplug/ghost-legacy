@@ -69,7 +69,7 @@ For the Type, choose Gradient and for the Color choose one of the three existing
 
 # Support
 
-Do you find this plugin version useful ? </br> please consider to make a donation to support 🙏🏼
+You find this plugin useful ? </br> Please consider making a donation to support 🙏🏼
 
 <p>
 <a href="https://www.buymeacoffee.com/mrstev3n"><img alt="Buy Me A Coffee" src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" height=32></a>
@@ -82,7 +82,7 @@ Do you find this plugin version useful ? </br> please consider to make a donatio
 
 - Clone the repository.
 - `npm install` installs all the dependencies.
-- `npm build` builds and bundles the plugin.
+- `npm run build` builds and bundles the plugin.
 - Import manifest into Figma and test.
 
 ### Contribution
@@ -96,7 +96,7 @@ Contributions are welcomed, feel free to make a pull request or create an issue
 
 Legacy version - Maker : [@mrstev3n](https://github.com/mrstev3n) & [@rickfaf](https://github.com/rickfaf)
 
-- code satinitization
+- code sanitization
 - add new parameters with custom color support
 - figjam friendly
 - documentation
