@@ -2,27 +2,23 @@
 
 <div align="center">
   Convert high fidelity mockups to skeleton placeholder.
-</div>
-
-<div align="center">
 
 </br>
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/mrstev3n/ghost-legacy?color=blue&style=plastic)
 ![Repo size](https://img.shields.io/github/repo-size/mrstev3n/ghost-legacy?color=orange&style=plastic)
-
 </div>
 
 # Installation
 
 Click the button below to try out this plugin from Figma community
 
-<picture>
+<picture id=arrow-n1>
   <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-animated-right.gif">
   <img alt="chevron-color-auto" src="src/assets/decoration/chevron-animated-right.gif" height=24>
 </picture>
 <a href="https://www.figma.com/community/plugin/1017135840453013129"><img alt="Install Plugin" src="https://img.shields.io/endpoint?url=https://figma-plugin-badges.vercel.app/api/installs/1017135840453013129" height=24/></a>
-<picture>
+<picture id=arrow-n2>
   <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-animated-left.gif">
   <img alt="chevron-color-auto" src="src/assets/decoration/chevron-animated-left.gif" height=24>
 </picture>
