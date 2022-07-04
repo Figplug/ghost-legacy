@@ -104,11 +104,11 @@ Origin version - Maker : [@ckark](https://github.com/ckark)
 
 - lightweight plugin to convert selected layers to solid or gradients
 
-</br>
-
 # End Notes
 
 We recall that this is an upgrade of the same good work initially done by Chris Kark on [Ghost](https://github.com/ckark/ghost). We worked on improving the plugin, making it faster and bringing some additional features.
+
+</br>
 
 # Meet me in the browser
 
