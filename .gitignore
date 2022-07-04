@@ -11,3 +11,6 @@ dist/
 
 # build artifacts
 code.js
+
+# Markdown lint
+.markdownlint.json

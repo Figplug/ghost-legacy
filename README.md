@@ -77,7 +77,7 @@ You find this plugin useful ? </br> Please consider making a donation to support
 
 # Code
 
-## Quick Setup
+### Quick Setup
 
 - Clone the repository.
 - `npm install` installs all the dependencies.
