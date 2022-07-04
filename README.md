@@ -108,7 +108,7 @@ Origin version - Maker : [@ckark](https://github.com/ckark)
 
 # End Notes
 
-We recall that this is a fork of the excellent work of Chris Kark, that we have improved and have seen fit to share with the community.
+We recall that this is an upgrade of the same good work initially done by Chris Kark on [Ghost](https://github.com/ckark/ghost). We worked on improving the plugin, making it faster and bringing some additional features.
 
 # Meet me in the browser
 
