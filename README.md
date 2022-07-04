@@ -16,8 +16,25 @@
 # Installation
 
 Click bellow to install the main version from figma community [Legacy version Coming Soon]
+src/assets/decoration/down-chevron.gif
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-light.gif">
+  <img alt="chevron-color-auto" src="src/assets/decoration/chevron-dark.gif" style="transform:rotate(-90deg); height:32px">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-light.gif">
+  <img alt="chevron-color-auto" src="src/assets/decoration/chevron-dark.gif" style="transform:rotate(-90deg); height:32px">
+</picture>
 <a href="https://www.figma.com/community/plugin/1017135840453013129"><img alt="Install Plugin" src="https://img.shields.io/endpoint?url=https://figma-plugin-badges.vercel.app/api/installs/1017135840453013129" height=24/></a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-light.gif">
+  <img alt="chevron-color-auto" src="src/assets/decoration/chevron-dark.gif" style="transform:rotate(90deg); height:32px">
+</picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="src/assets/decoration/chevron-light.gif">
+  <img alt="chevron-color-auto" src="src/assets/decoration/chevron-dark.gif" style="transform:rotate(90deg); height:32px">
+</picture>
 
 # Usage
 
