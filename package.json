@@ -1,7 +1,7 @@
 {
   "name": "ghost-legacy",
   "version": "1.0.0",
-  "description": "Turn your designs into placeholder skeleton.",
+  "description": "Turn your designs into skeleton placeholder.",
   "main": "code.js",
   "scripts": {
     "prebuild": "rimraf dist",
@@ -9,7 +9,7 @@
     "dev": "webpack --mode=development --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Chris Kark",
+  "author": "Steven & Oswald",
   "license": "MIT",
   "devDependencies": {
     "@figma/plugin-typings": "^1.31.0",
