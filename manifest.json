@@ -9,12 +9,12 @@
 		{
 			"name": "Type",
 			"key": "type",
-			"description": "Choose a Type of color | solid or gradient ?"
+			"description": "Choose a Type of color | Solid or Gradient ?"
 		},
 		{
 			"name": "Color",
 			"key": "color",
-			"description": "Choose the skeleton Color [⚠️ Enter X11 Color Name or HEX available for Solid only].",
+			"description": "Enter Skeleton Color | ⚠️ X11 Color Name or HEX for Solid only.",
 			"allowFreeform": true
 		}
 	]
