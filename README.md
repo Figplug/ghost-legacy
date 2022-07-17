@@ -3,7 +3,7 @@
 <div align="center">
   Convert high fidelity mockups to skeleton placeholder.
 
-</br>
+<br/>
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/mrstev3n/ghost-legacy?color=blue&style=plastic)
 ![Repo size](https://img.shields.io/github/repo-size/mrstev3n/ghost-legacy?color=orange&style=plastic)
@@ -35,7 +35,7 @@ Note: in the case of an invalid color entry, no action is taken (the interface r
 
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
-</br>
+<br/>
 
 ## 2. Ghost-legacy > Gradient
 
@@ -47,7 +47,7 @@ For the Type, choose Gradient and for the Color choose one of the three existing
 
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
-</br>
+<br/>
 
 # Object handled
 
