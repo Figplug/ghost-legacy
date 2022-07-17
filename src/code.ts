@@ -3,7 +3,7 @@ import { ghostify } from './helpers/ghostify.helper'
 import { doesItHavePropertyChildren } from './helpers/utils.helper'
 // import { RGB } from 'color-convert/conversions'
 
-let type = ['Solid', 'Gradient']
+let type = ['Solid hexColor', 'Solid colorName', 'Gradient']
 let colors = ['Gray', 'Black', 'White']
 let fills: (SolidPaint | GradientPaint)[]
 
