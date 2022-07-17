@@ -13,7 +13,7 @@ let colorNames = supportedColorKeyWords.map(
 	(k) => `${k[0].toUpperCase()}${k.slice(1)}`
 )
 let gradientColors = ['Gray', 'Black', 'White']
-let fills: (SolidPaint | GradientPaint)[]
+let fill: SolidPaint | GradientPaint
 
 figma.parameters.on(
 	'input',
@@ -68,16 +68,14 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 
 				// console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'hexColor =>', hexColor)
 
-				fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: rgbColor[0] / 255,
-							g: rgbColor[1] / 255,
-							b: rgbColor[2] / 255,
-						},
+				fill = {
+					type: 'SOLID',
+					color: {
+						r: rgbColor[0] / 255,
+						g: rgbColor[1] / 255,
+						b: rgbColor[2] / 255,
 					},
-				]
+				}
 			}
 
 			if (transformToKey(parameters.type as string) === 'solid-colorname') {
@@ -93,112 +91,104 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 
 				// console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'keyWordColor =>', keyWordColor)
 
-				fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: rgbColor[0] / 255,
-							g: rgbColor[1] / 255,
-							b: rgbColor[2] / 255,
-						},
+				fill = {
+					type: 'SOLID',
+					color: {
+						r: rgbColor[0] / 255,
+						g: rgbColor[1] / 255,
+						b: rgbColor[2] / 255,
 					},
-				]
+				}
 			}
 
 			if (parameters.type === 'Gradient' && parameters.color === 'Gray') {
-				fills = [
-					{
-						type: 'GRADIENT_LINEAR',
-						gradientTransform: [
-							[-1, 1.516437286852579e-8, 1],
-							[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
-						],
-						gradientStops: [
-							{
-								color: {
-									r: 0.8588235378265381,
-									g: 0.8588235378265381,
-									b: 0.8588235378265381,
-									a: 0.05,
-								},
-								position: 0,
+				fill = {
+					type: 'GRADIENT_LINEAR',
+					gradientTransform: [
+						[-1, 1.516437286852579e-8, 1],
+						[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
+					],
+					gradientStops: [
+						{
+							color: {
+								r: 0.8588235378265381,
+								g: 0.8588235378265381,
+								b: 0.8588235378265381,
+								a: 0.05,
 							},
-							{
-								color: {
-									r: 0.8588235378265381,
-									g: 0.8588235378265381,
-									b: 0.8588235378265381,
-									a: 1,
-								},
-								position: 0.5,
+							position: 0,
+						},
+						{
+							color: {
+								r: 0.8588235378265381,
+								g: 0.8588235378265381,
+								b: 0.8588235378265381,
+								a: 1,
 							},
-						],
-					},
-				]
+							position: 0.5,
+						},
+					],
+				}
 			}
 
 			if (parameters.type === 'Gradient' && parameters.color === 'Black') {
-				fills = [
-					{
-						type: 'GRADIENT_LINEAR',
-						gradientTransform: [
-							[-1, 1.516437286852579e-8, 1],
-							[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
-						],
-						gradientStops: [
-							{
-								color: {
-									r: 0,
-									g: 0,
-									b: 0,
-									a: 1,
-								},
-								position: 0,
+				fill = {
+					type: 'GRADIENT_LINEAR',
+					gradientTransform: [
+						[-1, 1.516437286852579e-8, 1],
+						[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
+					],
+					gradientStops: [
+						{
+							color: {
+								r: 0,
+								g: 0,
+								b: 0,
+								a: 1,
 							},
-							{
-								color: {
-									r: 0,
-									g: 0,
-									b: 0,
-									a: 0.05,
-								},
-								position: 0.5,
+							position: 0,
+						},
+						{
+							color: {
+								r: 0,
+								g: 0,
+								b: 0,
+								a: 0.05,
 							},
-						],
-					},
-				]
+							position: 0.5,
+						},
+					],
+				}
 			}
 
 			if (parameters.type === 'Gradient' && parameters.color === 'White') {
-				fills = [
-					{
-						type: 'GRADIENT_LINEAR',
-						gradientTransform: [
-							[-1, 1.516437286852579e-8, 1],
-							[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
-						],
-						gradientStops: [
-							{
-								color: {
-									r: 1,
-									g: 1,
-									b: 1,
-									a: 1,
-								},
-								position: 0,
+				fill = {
+					type: 'GRADIENT_LINEAR',
+					gradientTransform: [
+						[-1, 1.516437286852579e-8, 1],
+						[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
+					],
+					gradientStops: [
+						{
+							color: {
+								r: 1,
+								g: 1,
+								b: 1,
+								a: 1,
 							},
-							{
-								color: {
-									r: 1,
-									g: 1,
-									b: 1,
-									a: 0.05,
-								},
-								position: 0.5,
+							position: 0,
+						},
+						{
+							color: {
+								r: 1,
+								g: 1,
+								b: 1,
+								a: 0.05,
 							},
-						],
-					},
-				]
+							position: 0.5,
+						},
+					],
+				}
 			}
 
 			// ================================== Ghostify Design ============================================>
@@ -268,7 +258,7 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 				.filter((e) => 'INSTANCE' !== e.type)
 				.filter((e) => 'I' !== e.id.substring(0, 1))
 
-			await ghostify(allNodes, fills)
+			await ghostify(allNodes, fill)
 		}
 	} catch (error) {
 		console.error('Plugin error =>', error)

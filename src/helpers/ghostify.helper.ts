@@ -4,7 +4,7 @@ import { doesItHavePropertyFills } from './utils.helper'
 
 export async function ghostify(
 	allNodes: SceneNode[],
-	fills: (SolidPaint | GradientPaint)[]
+	fill: SolidPaint | GradientPaint
 ) {
 	const vectorNodes: VectorNode[] = []
 	const textNodes: TextNode[] = []
@@ -31,11 +31,11 @@ export async function ghostify(
 		}
 
 		if (node.type === 'FRAME' && node.parent.type === 'PAGE') {
-			if (fills[0].type === 'SOLID') {
+			if (fill.type === 'SOLID') {
 				const rgbColor: RGB = [
-					fills[0].color.r * 255,
-					fills[0].color.g * 255,
-					fills[0].color.b * 255,
+					fill.color.r * 255,
+					fill.color.g * 255,
+					fill.color.b * 255,
 				]
 
 				const hslColor = colorConvert.rgb.hsl(rgbColor)
@@ -56,11 +56,11 @@ export async function ghostify(
 				]
 			}
 
-			if (fills[0].type === 'GRADIENT_LINEAR') {
+			if (fill.type === 'GRADIENT_LINEAR') {
 				const rgbColor: RGB = [
-					fills[0].gradientStops[0].color.r * 255,
-					fills[0].gradientStops[0].color.g * 255,
-					fills[0].gradientStops[0].color.b * 255,
+					fill.gradientStops[0].color.r * 255,
+					fill.gradientStops[0].color.g * 255,
+					fill.gradientStops[0].color.b * 255,
 				]
 
 				const hslColor = colorConvert.rgb.hsl(rgbColor)
@@ -96,9 +96,9 @@ export async function ghostify(
 	})
 
 	ghostifyFrames(frameNodes)
-	ghostifyVector(vectorNodes, fills)
-	ghostifyShapes(sharpeNodes, fills)
-	await ghostifyText(textNodes, fills)
+	ghostifyVector(vectorNodes, fill)
+	ghostifyShapes(sharpeNodes, fill)
+	await ghostifyText(textNodes, fill)
 
 	figma.closePlugin('Selection ghostified 👻.')
 }
@@ -114,12 +114,12 @@ function ghostifyFrames(frameNodes: FrameNode[]) {
 
 function ghostifyVector(
 	vectorNodes: VectorNode[],
-	fills: (SolidPaint | GradientPaint)[]
+	fill: SolidPaint | GradientPaint
 ) {
 	vectorNodes.map((vectorNode) => {
-		vectorNode.fills = fills
+		vectorNode.fills = [fill]
 		if (vectorNode.strokeWeight > 0) {
-			vectorNode.strokes = fills
+			vectorNode.strokes = [fill]
 		} else if (vectorNode.strokeWeight === 0) {
 			vectorNode.strokes = []
 		}
@@ -136,15 +136,15 @@ function ghostifyShapes(
 		| EllipseNode
 		| PolygonNode
 	)[],
-	fills: any
+	fill: SolidPaint | GradientPaint
 ) {
 	sharpeNodes.map((sharpeNode) => {
 		if (
 			doesItHavePropertyFills(sharpeNode) &&
 			sharpeNode.fills !== figma.mixed
 		) {
-			sharpeNode.fills = fills
-			sharpeNode.strokes = fills
+			sharpeNode.fills = [fill]
+			sharpeNode.strokes = [fill]
 			// if (sharpeNode.fills.filter((fill) => fill.type !== 'IMAGE').length) {
 			// 	sharpeNode.fills = fills
 			// 	sharpeNode.strokes = fills
@@ -158,7 +158,7 @@ function ghostifyShapes(
 
 async function ghostifyText(
 	textNodes: TextNode[],
-	fills: (SolidPaint | GradientPaint)[]
+	fill: SolidPaint | GradientPaint
 ) {
 	for (const textNode of textNodes) {
 		if (textNode.fontName === figma.mixed) {
@@ -172,7 +172,7 @@ async function ghostifyText(
 			rectangleNode.cornerRadius = textNode.height
 			rectangleNode.x = textNode.relativeTransform[0][2]
 			rectangleNode.y = textNode.relativeTransform[1][2]
-			rectangleNode.fills = fills
+			rectangleNode.fills = [fill]
 
 			textNode.parent.insertChild(
 				textNode.parent.children.length,
@@ -216,7 +216,7 @@ async function ghostifyText(
 				rectangleNode.cornerRadius = lineHeightValue
 				rectangleNode.x = textNode.relativeTransform[0][2]
 				rectangleNode.y = textNode.relativeTransform[1][2] + lineHeightValue * i
-				rectangleNode.fills = fills
+				rectangleNode.fills = [fill]
 				textNode.parent.insertChild(
 					textNode.parent.children.length,
 					rectangleNode
