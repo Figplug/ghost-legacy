@@ -1,28 +1,57 @@
 import * as colorConvert from 'color-convert'
+import { supportedColorKeyWords } from './constants'
 import { ghostify } from './helpers/ghostify.helper'
-import { doesItHavePropertyChildren } from './helpers/utils.helper'
+import {
+	checkIfIsColorKeyword,
+	doesItHavePropertyChildren,
+	transformToKey,
+} from './helpers/utils.helper'
 // import { RGB } from 'color-convert/conversions'
 
-let type = ['Solid hexColor', 'Solid colorName', 'Gradient']
-let colors = ['Gray', 'Black', 'White']
+let types = ['Solid hexColor', 'Solid colorName', 'Gradient']
+let colorNames = supportedColorKeyWords.map(
+	(k) => `${k[0].toUpperCase()}${k.slice(1)}`
+)
+let gradientColors = ['Gray', 'Black', 'White']
 let fills: (SolidPaint | GradientPaint)[]
 
-figma.parameters.on('input', ({ key, query, result }: ParameterInputEvent) => {
-	switch (key) {
-		case 'type':
-			result.setSuggestions(
-				type.filter((s) => s.toLowerCase().includes(query.toLowerCase()))
-			)
-			break
-		case 'color':
-			result.setSuggestions(
-				colors.filter((s) => s.toLowerCase().includes(query.toLowerCase()))
-			)
-			break
-		default:
-			return
+figma.parameters.on(
+	'input',
+	({ key, query, parameters, result }: ParameterInputEvent) => {
+		switch (key) {
+			case 'type':
+				result.setSuggestions(
+					types.filter((s) => s.toLowerCase().includes(query.toLowerCase()))
+				)
+				break
+			case 'color':
+				const type = transformToKey(parameters.type as string)
+				if (type === 'solid-hexcolor') {
+					console.log('solid-hexcolor, parameters.type ==>', parameters.type)
+
+					result.setSuggestions([query.toLowerCase()])
+				} else if (type === 'solid-colorname') {
+					console.log('solid-colorname, parameters.type ==>', parameters.type)
+
+					result.setSuggestions(
+						colorNames.filter((s) =>
+							s.toLowerCase().includes(query.toLowerCase())
+						)
+					)
+				} else {
+					result.setSuggestions(
+						gradientColors.filter((s) =>
+							s.toLowerCase().includes(query.toLowerCase())
+						)
+					)
+				}
+
+				break
+			default:
+				return
+		}
 	}
-})
+)
 
 figma.on('run', async ({ parameters }: RunEvent) => {
 	try {
@@ -32,56 +61,37 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 				figma.closePlugin()
 			}
 
-			if (parameters.type === 'Solid' && parameters.color === 'Gray') {
-				fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: 0.9,
-							g: 0.9,
-							b: 0.9,
-						},
-					},
-				]
-			}
-
-			if (parameters.type === 'Solid' && parameters.color === 'Black') {
-				fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: 0,
-							g: 0,
-							b: 0,
-						},
-					},
-				]
-			}
-
-			if (parameters.type === 'Solid' && parameters.color === 'White') {
-				fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: 1,
-							g: 1,
-							b: 1,
-						},
-					},
-				]
-			}
-
-			if (
-				parameters.type === 'Solid' &&
-				parameters.color !== 'Gray' &&
-				parameters.color !== 'Black' &&
-				parameters.color !== 'White'
-			) {
-				// console.log('color non =>', parameters.color)
+			if (transformToKey(parameters.type as string) === 'solid-hexcolor') {
+				console.log('solid-hexcolor => ', parameters.color)
 				const hexColor = parameters.color
 				const rgbColor = colorConvert.hex.rgb(hexColor)
 
 				// console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'hexColor =>', hexColor)
+
+				fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: rgbColor[0] / 255,
+							g: rgbColor[1] / 255,
+							b: rgbColor[2] / 255,
+						},
+					},
+				]
+			}
+
+			if (transformToKey(parameters.type as string) === 'solid-colorname') {
+				console.log('solid-colorname => ', parameters.color)
+
+				const keyWordColor = (parameters.color as string).toLowerCase()
+
+				if (!checkIfIsColorKeyword(keyWordColor)) {
+					throw new Error('Wrong colorName')
+				}
+
+				const rgbColor = colorConvert.keyword.rgb(keyWordColor)
+
+				// console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'keyWordColor =>', keyWordColor)
 
 				fills = [
 					{

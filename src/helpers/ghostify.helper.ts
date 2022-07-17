@@ -1,3 +1,5 @@
+import * as colorConvert from 'color-convert'
+import { RGB } from 'color-convert/conversions'
 import { doesItHavePropertyFills } from './utils.helper'
 
 export async function ghostify(
@@ -24,8 +26,60 @@ export async function ghostify(
 			textNodes.push(node)
 		}
 
-		if (node.type === 'FRAME' && 'PAGE' !== node.parent.type) {
+		if (node.type === 'FRAME' && node.parent.type !== 'PAGE') {
 			frameNodes.push(node)
+		}
+
+		if (node.type === 'FRAME' && node.parent.type === 'PAGE') {
+			if (fills[0].type === 'SOLID') {
+				const rgbColor: RGB = [
+					fills[0].color.r * 255,
+					fills[0].color.g * 255,
+					fills[0].color.b * 255,
+				]
+
+				const hslColor = colorConvert.rgb.hsl(rgbColor)
+
+				hslColor[2] = hslColor[2] >= 50 ? 10 : 90
+
+				const newRgbColor = colorConvert.hsl.rgb(hslColor)
+
+				node.fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: newRgbColor[0] / 255,
+							g: newRgbColor[1] / 255,
+							b: newRgbColor[2] / 255,
+						},
+					},
+				]
+			}
+
+			if (fills[0].type === 'GRADIENT_LINEAR') {
+				const rgbColor: RGB = [
+					fills[0].gradientStops[0].color.r * 255,
+					fills[0].gradientStops[0].color.g * 255,
+					fills[0].gradientStops[0].color.b * 255,
+				]
+
+				const hslColor = colorConvert.rgb.hsl(rgbColor)
+
+				hslColor[2] = hslColor[2] >= 50 ? 10 : 90
+
+				const newRgbColor = colorConvert.hsl.rgb(hslColor)
+
+				node.fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: newRgbColor[0] / 255,
+							g: newRgbColor[1] / 255,
+							b: newRgbColor[2] / 255,
+						},
+					},
+				]
+			}
 		}
 
 		if (
@@ -89,13 +143,15 @@ function ghostifyShapes(
 			doesItHavePropertyFills(sharpeNode) &&
 			sharpeNode.fills !== figma.mixed
 		) {
-			if (sharpeNode.fills.filter((fill) => fill.type !== 'IMAGE').length) {
-				sharpeNode.fills = fills
-				sharpeNode.strokes = fills
-			} else {
-				sharpeNode.fills = []
-				sharpeNode.strokes = []
-			}
+			sharpeNode.fills = fills
+			sharpeNode.strokes = fills
+			// if (sharpeNode.fills.filter((fill) => fill.type !== 'IMAGE').length) {
+			// 	sharpeNode.fills = fills
+			// 	sharpeNode.strokes = fills
+			// } else {
+			// sharpeNode.fills = []
+			// sharpeNode.strokes = []
+			// }
 		}
 	})
 }
@@ -133,6 +189,7 @@ async function ghostifyText(
 					"You can't convert text until loading its source font."
 				)
 			}
+
 			const textNodeFontSize = Number(textNode.fontSize)
 			const textNodeHeight = textNode.height
 			let lineHeightValue =

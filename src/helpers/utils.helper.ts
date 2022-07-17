@@ -1,3 +1,6 @@
+import { KEYWORD } from 'color-convert/conversions'
+import { supportedColorKeyWords } from '../constants'
+
 export function doesItHavePropertyChildren(
 	node: SceneNode
 ): node is
@@ -60,4 +63,12 @@ export function doesItHavePropertyFills(
 		node.type === 'HIGHLIGHT' ||
 		node.type === 'WASHI_TAPE'
 	)
+}
+
+export function transformToKey(label: string) {
+	return label.toLowerCase().replace(' ', '-')
+}
+
+export function checkIfIsColorKeyword(v: any): v is KEYWORD {
+	return typeof v === 'string' && !!supportedColorKeyWords.find((k) => k === v)
 }
