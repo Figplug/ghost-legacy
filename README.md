@@ -1,10 +1,8 @@
 <h1 align="center"><img alt="Ghost-legacy" src="src/assets/ghost-legacy.svg" height="150px"/></h1>
 
 <div align="center">
-  Convert high fidelity mockups to skeleton placeholder.
-
-<br/>
-
+  <p>Convert high fidelity mockups to skeleton placeholder.</p>
+  
 ![GitHub last commit](https://img.shields.io/github/last-commit/mrstev3n/ghost-legacy?color=blue&style=plastic)
 ![Repo size](https://img.shields.io/github/repo-size/mrstev3n/ghost-legacy?color=orange&style=plastic)
 </div>
@@ -35,7 +33,6 @@ Note: in the case of an invalid color entry, no action is taken (the interface r
 
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
-<br/>
 
 ## 2. Ghost-legacy > Gradient
 
@@ -47,7 +44,6 @@ For the Type, choose Gradient and for the Color choose one of the three existing
 
 !["Action Preview"](src/assets/ghost-demo-1.gif)
 
-<br/>
 
 # Object handled
 
@@ -64,7 +60,7 @@ For the Type, choose Gradient and for the Color choose one of the three existing
 
 # Support
 
-You find this plugin useful ? </br> Please consider making a donation to support 🙏🏼
+You find this plugin useful ? <br/> Please consider making a donation to support 🙏🏼
 
 <p>
 <a href="https://www.buymeacoffee.com/mrstev3n"><img alt="Buy Me A Coffee" src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" height=32></a>
@@ -104,7 +100,7 @@ Origin version - Maker : [@ckark](https://github.com/ckark)
 
 We recall that this is an upgrade of the same good work initially done by Chris Kark on [Ghost](https://github.com/ckark/ghost). We worked on improving the plugin, making it faster and bringing some additional features.
 
-</br>
+
 
 # Meet me in the browser
 
