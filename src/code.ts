@@ -32,7 +32,7 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 				figma.closePlugin()
 			}
 
-			if (parameters.color === 'Gray' && parameters.type === 'Solid') {
+			if (parameters.type === 'Solid' && parameters.color === 'Gray') {
 				console.log('solid gray =>')
 				fills = [
 					{
@@ -41,6 +41,32 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 							r: 0.9,
 							g: 0.9,
 							b: 0.9,
+						},
+					},
+				]
+			}
+
+			if (parameters.type === 'Solid' && parameters.color === 'Black') {
+				fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: 0,
+							g: 0,
+							b: 0,
+						},
+					},
+				]
+			}
+
+			if (parameters.type === 'Solid' && parameters.color === 'White') {
+				fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: 1,
+							g: 1,
+							b: 1,
 						},
 					},
 				]
@@ -70,7 +96,7 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 				]
 			}
 
-			if (parameters.color === 'Gray' && parameters.type === 'Gradient') {
+			if (parameters.type === 'Gradient' && parameters.color === 'Gray') {
 				fills = [
 					{
 						type: 'GRADIENT_LINEAR',
@@ -102,20 +128,7 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 				]
 			}
 
-			if (parameters.color === 'Black' && parameters.type === 'Solid') {
-				fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: 0,
-							g: 0,
-							b: 0,
-						},
-					},
-				]
-			}
-
-			if (parameters.color === 'Black' && parameters.type === 'Gradient') {
+			if (parameters.type === 'Gradient' && parameters.color === 'Black') {
 				fills = [
 					{
 						type: 'GRADIENT_LINEAR',
@@ -147,20 +160,7 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 				]
 			}
 
-			if (parameters.color === 'White' && parameters.type === 'Solid') {
-				fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: 1,
-							g: 1,
-							b: 1,
-						},
-					},
-				]
-			}
-
-			if (parameters.color === 'White' && parameters.type === 'Gradient') {
+			if (parameters.type === 'Gradient' && parameters.color === 'White') {
 				fills = [
 					{
 						type: 'GRADIENT_LINEAR',
