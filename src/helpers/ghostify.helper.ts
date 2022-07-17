@@ -4,10 +4,10 @@ export async function ghostify(
 	allNodes: SceneNode[],
 	fills: (SolidPaint | GradientPaint)[]
 ) {
-	let vectorNodes: VectorNode[] = []
-	let textNodes: TextNode[] = []
-	let frameNodes: FrameNode[] = []
-	let sharpeNodes: (
+	const vectorNodes: VectorNode[] = []
+	const textNodes: TextNode[] = []
+	const frameNodes: FrameNode[] = []
+	const sharpeNodes: (
 		| BooleanOperationNode
 		| EllipseNode
 		| LineNode

@@ -33,7 +33,6 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 			}
 
 			if (parameters.type === 'Solid' && parameters.color === 'Gray') {
-				console.log('solid gray =>')
 				fills = [
 					{
 						type: 'SOLID',
@@ -78,7 +77,7 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 				parameters.color !== 'Black' &&
 				parameters.color !== 'White'
 			) {
-				// const colorConvert = require('color-convert')
+				// console.log('color non =>', parameters.color)
 				const hexColor = parameters.color
 				const rgbColor = colorConvert.hex.rgb(hexColor)
 
@@ -193,7 +192,7 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 			}
 
 			// ================================== Ghostify Design ============================================>
-			let all: SceneNode[] = []
+			let allNodes: SceneNode[] = []
 			const traversal = (
 				currentSelectionNodes: readonly SceneNode[],
 				allNodes: SceneNode[]
@@ -217,8 +216,8 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 				for (; !a.done; ) a = t.next()
 			}
 
-			traversal(figma.currentPage.selection, all)
-			all = all.flat()
+			traversal(figma.currentPage.selection, allNodes)
+			allNodes = allNodes.flat()
 
 			const detach = (sceneNodes: SceneNode[]) => {
 				let t: SceneNode[] = []
@@ -235,7 +234,7 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 						t
 					)
 
-					all.push(
+					allNodes.push(
 						...t
 							.flat()
 							.filter((node) => 'INSTANCE' !== node.type)
@@ -248,18 +247,18 @@ figma.on('run', async ({ parameters }: RunEvent) => {
 						.filter((node) => 'I' !== node.id.substring(0, 1))
 
 					detach(t)
-					all.flat()
+					allNodes.flat()
 				}
 			}
 
-			detach(all)
+			detach(allNodes)
 
-			all = all
+			allNodes = allNodes
 				.flat()
 				.filter((e) => 'INSTANCE' !== e.type)
 				.filter((e) => 'I' !== e.id.substring(0, 1))
 
-			await ghostify(all, fills)
+			await ghostify(allNodes, fills)
 		}
 	} catch (error) {
 		console.error('Plugin error =>', error)
