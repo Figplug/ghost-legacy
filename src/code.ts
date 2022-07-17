@@ -1,101 +1,108 @@
+import * as colorConvert from 'color-convert'
+import { ghostify } from './helpers/ghostify.helper'
+import { doesItHavePropertyChildren } from './helpers/utils.helper'
+// import { RGB } from 'color-convert/conversions'
 
-let type = ['Solid', 'Gradient'],
-colors = ['Gray', 'Black', 'White']
-let fills: any;
+let type = ['Solid', 'Gradient']
+let colors = ['Gray', 'Black', 'White']
+let fills: (SolidPaint | GradientPaint)[]
 
 figma.parameters.on('input', ({ key, query, result }: ParameterInputEvent) => {
-switch (key) {
-	case 'type':
-		result.setSuggestions(type.filter((s) => s.toLowerCase().includes(query.toLowerCase())));
-		break;
-	case 'color':
-		result.setSuggestions(colors.filter((s) => s.toLowerCase().includes(query.toLowerCase())));
-		break;
-	default:
-		return;
-}
-});
-
-figma.on('run', ({ parameters }: RunEvent) => {
-if (parameters) {
-	if (figma.currentPage.selection.length === 0) {
-		figma.notify('Select at least one item.')
-		figma.closePlugin()
+	switch (key) {
+		case 'type':
+			result.setSuggestions(
+				type.filter((s) => s.toLowerCase().includes(query.toLowerCase()))
+			)
+			break
+		case 'color':
+			result.setSuggestions(
+				colors.filter((s) => s.toLowerCase().includes(query.toLowerCase()))
+			)
+			break
+		default:
+			return
 	}
+})
 
-	if (parameters &&
-		'Gray' === parameters.color &&
-		'Solid' === parameters.type) {
-			fills = [
-				{
-					type: 'SOLID',
-					color: {
-						r: 0.9,
-						g: 0.9,
-						b: 0.9,
-					},
-				},
-			]
-		}
-	
-		if ('Solid' === parameters.type &&
-		'Gray' !== parameters.color &&
-		'Black' !== parameters.color &&
-		'White' !== parameters.color) {
-			const colorConvert = require('color-convert')
-			const hexColor = parameters.color
-			const rgbColor = colorConvert.hex.rgb(hexColor);
+figma.on('run', async ({ parameters }: RunEvent) => {
+	try {
+		if (parameters) {
+			if (figma.currentPage.selection.length === 0) {
+				figma.notify('Select at least one item.')
+				figma.closePlugin()
+			}
 
-			// console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'hexColor =>', hexColor)
-
-			fills =  [
-				{
-					type: 'SOLID',
-					color: {
-						r: rgbColor[0] / 255,
-						g: rgbColor[1] / 255,
-						b: rgbColor[2] / 255,
-					},
-				},
-			]
-		} 
-		
-
-		if ('Gray' === parameters.color &&
-		'Gradient' === parameters.type) {
-			fills = [
-				{
-					type: 'GRADIENT_LINEAR',
-					gradientTransform: [
-						[-1, 1.516437286852579e-8, 1],
-						[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
-					],
-					gradientStops: [
-						{
-							color: {
-								r: 0.8588235378265381,
-								g: 0.8588235378265381,
-								b: 0.8588235378265381,
-								a: 0.05,
-							},
-							position: 0,
+			if (parameters.color === 'Gray' && parameters.type === 'Solid') {
+				console.log('solid gray =>')
+				fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: 0.9,
+							g: 0.9,
+							b: 0.9,
 						},
-						{
-							color: {
-								r: 0.8588235378265381,
-								g: 0.8588235378265381,
-								b: 0.8588235378265381,
-								a: 1,
-							},
-							position: 0.5,
+					},
+				]
+			}
+
+			if (
+				parameters.type === 'Solid' &&
+				parameters.color !== 'Gray' &&
+				parameters.color !== 'Black' &&
+				parameters.color !== 'White'
+			) {
+				// const colorConvert = require('color-convert')
+				const hexColor = parameters.color
+				const rgbColor = colorConvert.hex.rgb(hexColor)
+
+				// console.log('Color conversion =>', 'rgbColor =>', rgbColor, 'hexColor =>', hexColor)
+
+				fills = [
+					{
+						type: 'SOLID',
+						color: {
+							r: rgbColor[0] / 255,
+							g: rgbColor[1] / 255,
+							b: rgbColor[2] / 255,
 						},
-					],
-				},
-			]
-		}
-			
-		if ('Black' === parameters.color &&
-			'Solid' === parameters.type ) {
+					},
+				]
+			}
+
+			if (parameters.color === 'Gray' && parameters.type === 'Gradient') {
+				fills = [
+					{
+						type: 'GRADIENT_LINEAR',
+						gradientTransform: [
+							[-1, 1.516437286852579e-8, 1],
+							[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
+						],
+						gradientStops: [
+							{
+								color: {
+									r: 0.8588235378265381,
+									g: 0.8588235378265381,
+									b: 0.8588235378265381,
+									a: 0.05,
+								},
+								position: 0,
+							},
+							{
+								color: {
+									r: 0.8588235378265381,
+									g: 0.8588235378265381,
+									b: 0.8588235378265381,
+									a: 1,
+								},
+								position: 0.5,
+							},
+						],
+					},
+				]
+			}
+
+			if (parameters.color === 'Black' && parameters.type === 'Solid') {
 				fills = [
 					{
 						type: 'SOLID',
@@ -107,42 +114,40 @@ if (parameters) {
 					},
 				]
 			}
-			
-		if ('Black' === parameters.color &&
-		'Gradient' === parameters.type) {
-			fills = [
-				{
-					type: 'GRADIENT_LINEAR',
-					gradientTransform: [
-						[-1, 1.516437286852579e-8, 1],
-						[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
-					],
-					gradientStops: [
-						{
-							color: {
-								r: 0,
-								g: 0,
-								b: 0,
-								a: 1,
+
+			if (parameters.color === 'Black' && parameters.type === 'Gradient') {
+				fills = [
+					{
+						type: 'GRADIENT_LINEAR',
+						gradientTransform: [
+							[-1, 1.516437286852579e-8, 1],
+							[-1.7966517162903983e-8, -0.0659240335226059, 0.5335403084754944],
+						],
+						gradientStops: [
+							{
+								color: {
+									r: 0,
+									g: 0,
+									b: 0,
+									a: 1,
+								},
+								position: 0,
 							},
-							position: 0,
-						},
-						{
-							color: {
-								r: 0,
-								g: 0,
-								b: 0,
-								a: 0.05,
+							{
+								color: {
+									r: 0,
+									g: 0,
+									b: 0,
+									a: 0.05,
+								},
+								position: 0.5,
 							},
-							position: 0.5,
-						},
-					],
-				},
-			]
-		}
-			
-		if ('White' === parameters.color &&
-			'Solid' === parameters.type) {
+						],
+					},
+				]
+			}
+
+			if (parameters.color === 'White' && parameters.type === 'Solid') {
 				fills = [
 					{
 						type: 'SOLID',
@@ -154,9 +159,8 @@ if (parameters) {
 					},
 				]
 			}
-			
-		if ('White' === parameters.color &&
-			'Gradient' === parameters.type) {
+
+			if (parameters.color === 'White' && parameters.type === 'Gradient') {
 				fills = [
 					{
 						type: 'GRADIENT_LINEAR',
@@ -188,142 +192,76 @@ if (parameters) {
 				]
 			}
 
-	let all = new Array();
-	const traversal = (e: any, l: any): any => {
-		const t = (function* e(t): any {
-			const a = t.length;
-			if (0 !== a) {
-				for (let l = 0; l < a; l++) {
-					const a = t[l];
-					yield a;
-					let o = a.children;
-					o && (yield* e(o));
-				}
-				l.push(t);
-			}
-		})(e);
-		let a = t.next();
-		for (; !a.done; ) a = t.next();
-	};
-
-
-	traversal(figma.currentPage.selection, all), (all = all.flat());
-
-	const detach = (e: any): any => {
-		let t = new Array();
-		if ((e = e.filter((e: any) => 'INSTANCE' === e.type).filter((e: any) => 'I' !== e.id.substr(0, 1))).length > 0)
-			return (
-				traversal(
-					e.map((e: any) => e.detachInstance()),
-					t,
-				),
-				all.push(
-					t
-						.flat()
-						.filter((e) => 'INSTANCE' !== e.type)
-						.filter((e) => 'I' !== e.id.substr(0, 1)),
-				),
-				(t = t
-					.flat()
-					.filter((e) => 'INSTANCE' === e.type)
-					.filter((e) => 'I' !== e.id.substr(0, 1))),
-				detach(t),
-				all.flat()
-			);
-	};
-
-	detach(all)
-
-	all = all
-			.flat()
-			.filter((e) => 'INSTANCE' !== e.type)
-			.filter((e) => 'I' !== e.id.substr(0, 1))
-
-
-	let frames = all.filter((e) => 'FRAME' === e.type && 'PAGE' !== e.parent.type)
-
-	let shapes = all.filter(
-			(n) =>
-				n.type === 'BOOLEAN_OPERATION' ||
-				n.type === 'ELLIPSE' ||
-				n.type === 'LINE' ||
-				n.type === 'POLYGON' ||
-				n.type === 'RECTANGLE' ||
-				n.type === 'SLICE' ||
-				n.type === 'STAR',
-		) as SceneNode[]
-
-		let vectors = all.filter((n) => n.type === 'VECTOR') as VectorNode[]
-		let text = all.filter((n) => n.type === 'TEXT') as TextNode[];
-
-	const ghostifyFrames = (e: any) => {
-			e.map((e: any) => {
-				(e.layoutMode = 'NONE'), (e.effects = []), (e.fills = []), (e.strokes = []);
-			});
-		}
-
-		const ghostifyVector = (e: any) => {
-			e.map((e: any) => {
-				(e.fills = fills), e.strokeWeight > 0 && (e.strokes = fills), 0 === e.strokeWeight && (e.strokes = []);
-			});
-		}
-
-		const ghostifyShapes = (e: any) => {
-			e.map((e: any) => {
-				e.fills.filter((e: any) => 'IMAGE' !== e.type)
-					? ((e.fills = fills), (e.strokes = fills))
-					: ((e.fills = []), (e.strokes = []));
-			});
-		}
-
-		const ghostifyText = (e: any) =>
-			new Promise((t) => {
-				e.map(async (e: any) => {
-					if (e.fontName === figma.mixed) {
-						const t = figma.createRectangle();
-						let i = e.height;
-						t.resizeWithoutConstraints(e.width, 0.7 * e.height),
-							(t.cornerRadius = i),
-							(t.x = e.relativeTransform[0][2]),
-							(t.y = e.relativeTransform[1][2]),
-							(t.fills = fills),
-							e.parent.insertChild(e.parent.children.length, t),
-							e.remove();
-					} else {
-						await figma.loadFontAsync(e.fontName as FontName);
-						(e.textAutoResize = 'NONE'),
-							!0 === e.hasMissingFont &&
-								figma.closePlugin("You can't convert text until loading its source font.");
-						let t = Number(e.fontSize),
-							i = e.height,
-							n = e.lineHeight;
-						isNaN(n) && (n = 1.25 * t);
-						i > n ? (e.textAutoResize = 'NONE') : (e.textAutoResize = 'WIDTH_AND_HEIGHT');
-						let r = Math.round(i / n);
-						for (let t = 0; t < r; t++) {
-							const i = figma.createRectangle();
-							i.resizeWithoutConstraints(e.width, (e.height, 0.7 * n)),
-								(i.cornerRadius = n),
-								(i.x = e.relativeTransform[0][2]),
-								(i.y = e.relativeTransform[1][2] + n * t),
-								(i.fills = fills),
-								e.parent.insertChild(e.parent.children.length, i);
+			// ================================== Ghostify Design ============================================>
+			let all: SceneNode[] = []
+			const traversal = (
+				currentSelectionNodes: readonly SceneNode[],
+				allNodes: SceneNode[]
+			) => {
+				const t = (function* e(t) {
+					const a = t.length
+					if (0 !== a) {
+						for (let i = 0; i < a; i++) {
+							const a = t[i]
+							yield a
+							let o: readonly SceneNode[]
+							if (doesItHavePropertyChildren(a)) {
+								o = a.children
+							}
+							o && (yield* e(o))
 						}
-						e.remove();
+						allNodes.push(...t)
 					}
-				}),
-					setTimeout(() => t('done'), 0);
-			});
+				})(currentSelectionNodes)
+				let a = t.next()
+				for (; !a.done; ) a = t.next()
+			}
 
+			traversal(figma.currentPage.selection, all)
+			all = all.flat()
 
-	const ghostify = async () => {
-		ghostifyFrames(frames),
-			ghostifyVector(vectors),
-			ghostifyShapes(shapes),
-			await ghostifyText(text),
-			figma.closePlugin('Selection ghostified 👻.');
-	};
-	
-	ghostify();
-}
-});
+			const detach = (sceneNodes: SceneNode[]) => {
+				let t: SceneNode[] = []
+				const instanceNodes: InstanceNode[] = []
+				sceneNodes.forEach((node) => {
+					if (node.type === 'INSTANCE' && 'I' !== node.id.substring(0, 1)) {
+						instanceNodes.push(node)
+					}
+				})
+
+				if (instanceNodes.length > 0) {
+					traversal(
+						instanceNodes.map((node) => node.detachInstance()),
+						t
+					)
+
+					all.push(
+						...t
+							.flat()
+							.filter((node) => 'INSTANCE' !== node.type)
+							.filter((node) => 'I' !== node.id.substring(0, 1))
+					)
+
+					t = t
+						.flat()
+						.filter((node) => 'INSTANCE' === node.type)
+						.filter((node) => 'I' !== node.id.substring(0, 1))
+
+					detach(t)
+					all.flat()
+				}
+			}
+
+			detach(all)
+
+			all = all
+				.flat()
+				.filter((e) => 'INSTANCE' !== e.type)
+				.filter((e) => 'I' !== e.id.substring(0, 1))
+
+			await ghostify(all, fills)
+		}
+	} catch (error) {
+		console.error('Plugin error =>', error)
+	}
+})
