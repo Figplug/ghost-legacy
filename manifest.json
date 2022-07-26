@@ -1,6 +1,6 @@
 {
-	"name": "Ghost-legacy",
-	"id": "1017135840453013129",
+	"name": "ghost-legacy",
+	"id": "1133691073714281462",
 	"api": "1.0.0",
 	"main": "dist/code.js",
 	"editorType": ["figma"],
