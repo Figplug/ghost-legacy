@@ -98,13 +98,4 @@ Origin version - Maker : [@ckark](https://github.com/ckark)
 
 # End Notes
 
-We recall that this is an upgrade of the same good work initially done by Chris Kark on [Ghost](https://github.com/ckark/ghost). We worked on improving the plugin, making it faster and bringing some additional features.
-
-
-
-# Meet me in the browser
-
-<p>
-<a href="https://figma.com/@steven"><img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" height=24></a>
-<a href="https://twitter.com/mrstev3n"><img src="https://img.shields.io/badge/twitter-%231DA1F2.svg?&style=for-the-badge&logo=twitter&logoColor=white" height=24></a>
-</p>
+We recall that this is an upgrade of the work initially done by Chris Kark on [Ghost](https://github.com/ckark/ghost). We worked on improving the plugin, making it faster and bringing some additional features.
