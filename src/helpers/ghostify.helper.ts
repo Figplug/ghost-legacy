@@ -1,5 +1,3 @@
-import * as colorConvert from 'color-convert'
-import { RGB } from 'color-convert/conversions'
 import { doesItHavePropertyFills } from './utils.helper'
 
 export async function ghostify(
@@ -28,58 +26,6 @@ export async function ghostify(
 
 		if (node.type === 'FRAME' && node.parent.type !== 'PAGE') {
 			frameNodes.push(node)
-		}
-
-		if (node.type === 'FRAME' && node.parent.type === 'PAGE') {
-			if (fill.type === 'SOLID') {
-				const rgbColor: RGB = [
-					fill.color.r * 255,
-					fill.color.g * 255,
-					fill.color.b * 255,
-				]
-
-				const hslColor = colorConvert.rgb.hsl(rgbColor)
-
-				hslColor[2] = hslColor[2] >= 50 ? 10 : 90
-
-				const newRgbColor = colorConvert.hsl.rgb(hslColor)
-
-				node.fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: newRgbColor[0] / 255,
-							g: newRgbColor[1] / 255,
-							b: newRgbColor[2] / 255,
-						},
-					},
-				]
-			}
-
-			if (fill.type === 'GRADIENT_LINEAR') {
-				const rgbColor: RGB = [
-					fill.gradientStops[0].color.r * 255,
-					fill.gradientStops[0].color.g * 255,
-					fill.gradientStops[0].color.b * 255,
-				]
-
-				const hslColor = colorConvert.rgb.hsl(rgbColor)
-
-				hslColor[2] = hslColor[2] >= 50 ? 10 : 90
-
-				const newRgbColor = colorConvert.hsl.rgb(hslColor)
-
-				node.fills = [
-					{
-						type: 'SOLID',
-						color: {
-							r: newRgbColor[0] / 255,
-							g: newRgbColor[1] / 255,
-							b: newRgbColor[2] / 255,
-						},
-					},
-				]
-			}
 		}
 
 		if (
