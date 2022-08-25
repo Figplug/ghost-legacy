@@ -98,4 +98,4 @@ Origin version - Maker : [@ckark](https://github.com/ckark)
 
 # End Notes
 
-We recall that this is an upgrade of the work initially done by Chris Kark on [Ghost](https://github.com/ckark/ghost). We worked on improving the plugin, making it faster and bringing some additional features.
+We recall that this is an upgrade of the work initially done by Chris Kark on [Ghost](https://github.com/ckark/ghost). We worked on improving the source code, making it faster and bringing some additional features.
