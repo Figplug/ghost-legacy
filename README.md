@@ -31,7 +31,8 @@ For the Type, choose `Solid hexColor` and for the Color enter a valid hexadecima
 
 > Note: in the case of an invalid HEX entry, '000000' is taken by default.
 
-!["Action Preview"](src/assets/ghost-demo-1.gif)  
+!["Action Preview"](src/assets/ghost-demo-1.gif)
+<br/>
 
 ## 2. Ghost-legacy > Solid colorName
 
@@ -39,7 +40,8 @@ Select One (1) or more layers and run the plugin.
 
 For the Type, choose `Solid colorName` and for the Color enter a valid X11 color name or choose from the list.
 
-!["Action Preview"](src/assets/ghost-demo-2.gif)  
+!["Action Preview"](src/assets/ghost-demo-2.gif)
+<br/>
 
 ## 3. Ghost-legacy > Gradient
 
@@ -47,7 +49,8 @@ Select One (1) or more layers and run the plugin.
 
 For the Type, choose `Gradient` and for the Color choose one of the three existing proposals (Gray, Black, White)
 
-!["Action Preview"](src/assets/ghost-demo-3.gif)  
+!["Action Preview"](src/assets/ghost-demo-3.gif)
+<br/>
 
 # Object handled
 
