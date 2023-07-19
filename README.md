@@ -45,7 +45,7 @@ For the Type, choose `Solid colorName` and for the Color enter a valid X11 color
 
 Select One (1) or more layers and run the plugin.
 
-For the Type, choose Gradient and for the Color choose one of the three existing proposals (Gray, White, Black)
+For the Type, choose Gradient and for the Color choose one of the three existing proposals (Gray, Black, White)
 
 !["Action Preview"](src/assets/ghost-demo-3.gif)
 
