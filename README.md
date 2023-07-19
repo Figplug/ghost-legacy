@@ -7,7 +7,7 @@
 ![Repo size](https://img.shields.io/github/repo-size/mrstev3n/ghost-legacy?color=orange&style=plastic)
 </div>
 
-# Installation
+# Support
 
 Click the button below to try out this plugin from Figma community
 
@@ -15,7 +15,7 @@ Click the button below to try out this plugin from Figma community
   <source media="(prefers-color-scheme: dark)" srcset="https://i.postimg.cc/0yMTTzD4/chevron-animated-right.gif">
   <img alt="chevron-color-auto" src="https://i.postimg.cc/0yMTTzD4/chevron-animated-right.gif" height=24>
 </picture>
-<a href="https://www.figma.com/community/plugin/1017135840453013129"><img alt="Install Plugin" src="https://img.shields.io/endpoint?url=https://figma-plugin-badges.vercel.app/api/installs/1017135840453013129" height=24/></a>
+<a href="https://www.figma.com/community/plugin/1134100787475908065/Ghost-Legacy"><img alt="Install Plugin" src="https://img.shields.io/endpoint?url=https://figma-plugin-badges.vercel.app/api/installs/1134100787475908065" height=24/></a>
 <picture id=arrow-n2>
   <source media="(prefers-color-scheme: dark)" srcset="https://i.postimg.cc/ZKMks8B3/chevron-animated-left.gif">
   <img alt="chevron-color-auto" src="https://i.postimg.cc/ZKMks8B3/chevron-animated-left.gif" height=24>
